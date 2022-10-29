@@ -7,35 +7,15 @@ function FeelingsPage(){
     const history = useHistory();
 
 
-    let info = {
-        feeling: 5,
-        understanding: 1000,
-        support: 1000,
-        comments: 'blah', 
-        flagged: true,
-        date: '5-5-2005'
-    }
-    
-    const feelingRating = () => {
-
-    }
-    
-    const handleSubmit = (evt) => {
+    function handleSubmit(evt){
         evt.preventDefault();
-
-        axios({
-            method: 'POST',
-            url: '/feedback',
-            data: info
+        console.log('a thing', evt.target.value)
+        dispatch({
+            type:'ADD_FEELINGS',
+            payload: evt.target.value
         })
-        .then((response) => {
-            console.log('post success');
-        })
-        .catch((err) => {
-            console.error('oh no');
-        });
-    }        
 
+    }
 
 
     
@@ -46,9 +26,9 @@ function FeelingsPage(){
             <section>
                 <h1> How are you feeling today?</h1>
             </section>
-            <form onSubmit={handleSubmit}>
+            <form>
                 <input 
-                    onChange={feelingRating}
+                    onChange={handleSubmit}
                     type="number" 
                     min="0" 
                     max="5"
@@ -57,7 +37,7 @@ function FeelingsPage(){
                 > 
                 </input>
 
-                <button>
+                <button type='submit'>
                     Next
                 </button>
 
