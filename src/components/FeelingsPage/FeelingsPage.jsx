@@ -1,25 +1,20 @@
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-import axios from 'axios';
+
 
 function FeelingsPage(){
     const dispatch = useDispatch();
     const history = useHistory();
 
 
-    function handleSubmit(evt){
+    function handleChange(evt){
         evt.preventDefault();
         console.log('a thing', evt.target.value)
         dispatch({
             type:'ADD_FEELINGS',
             payload: evt.target.value
         })
-
     }
-
-
-    
-
 
     return(
         <>
@@ -28,7 +23,7 @@ function FeelingsPage(){
             </section>
             <form>
                 <input 
-                    onChange={handleSubmit}
+                    onChange={handleChange}
                     type="number" 
                     min="0" 
                     max="5"
@@ -37,13 +32,13 @@ function FeelingsPage(){
                 > 
                 </input>
 
-                <button type='submit'>
+                <button 
+                    onClick={()=> history.push('/understandingpage')}
+                >
                     Next
                 </button>
 
             </form>
-        
-        
         </>
     );
 }
