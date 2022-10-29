@@ -11,17 +11,17 @@ const feedback = (state = {}, action) => {
     let {feelings, understanding, support, comments} = state;
     
     switch (action.type) {
-        case "ADD_FEELINGS":
+        case "ADD_FEELING":
             return {
                 ...state,
-                feelings: action.payload
+                feeling: action.payload
             };
         case "ADD_UNDERSTANDING":
             return {
                 ...state,
                 understanding: action.payload
             };
-        case "ADD_SUPPORTED":
+        case "ADD_SUPPORT":
             return {
                 ...state,
                 support: action.payload

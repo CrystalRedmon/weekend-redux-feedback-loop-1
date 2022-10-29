@@ -10,7 +10,7 @@ function SupportPage(){
         evt.preventDefault();
         console.log('a thing', evt.target.value)
         dispatch({
-            type:'ADD_SUPPORTED',
+            type:'ADD_SUPPORT',
             payload: evt.target.value
         })
     }

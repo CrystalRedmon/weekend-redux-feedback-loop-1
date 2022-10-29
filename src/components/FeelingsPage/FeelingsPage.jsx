@@ -11,7 +11,7 @@ function FeelingsPage(){
         evt.preventDefault();
         console.log('a thing', evt.target.value)
         dispatch({
-            type:'ADD_FEELINGS',
+            type:'ADD_FEELING',
             payload: evt.target.value
         })
     }
