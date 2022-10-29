@@ -6,14 +6,17 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
+const feedback = (state = [], action) => {
+
+    return state;
+}
+
 
 
 const storeInstance = createStore(
     combineReducers({
-        // comments,
-        // feelings, 
-        // support, 
-        // understanding
+
+        feedback
     }),
 
 )
