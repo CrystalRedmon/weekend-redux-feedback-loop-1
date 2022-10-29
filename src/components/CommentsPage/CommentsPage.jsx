@@ -8,12 +8,13 @@ function CommentsPage(){
 
     function handleChange(evt){
         evt.preventDefault();
-        console.log('a thing', evt.target.value)
+        let comment = document.forms['commentsForm']['input'].value;
+
         dispatch({
             type:'ADD_COMMENTS',
-            payload: evt.target.value
+            payload: comment
         })
-        
+        history.push('/reviewpage')
     }
 
     return(
@@ -21,9 +22,9 @@ function CommentsPage(){
             <section>
                 <h1> How well are you being supported?</h1>
             </section>
-            <form>
+            <form name="commentsForm" onSubmit={handleChange}>
                 <input 
-                    onChange={handleChange}
+                    name="input"
                     type="text" 
                     min="0" 
                     max="5"
@@ -32,7 +33,7 @@ function CommentsPage(){
                 </input>
 
                 <button 
-                    onClick={()=> history.push('/reviewpage')}
+                    type="submit"
                 >
                     Next
                 </button>
