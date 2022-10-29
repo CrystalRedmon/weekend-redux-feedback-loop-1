@@ -9,13 +9,13 @@ function FeelingsPage(){
 
     function handleChange(evt){
         evt.preventDefault();
-        let ranking = document.forms['feeling']['input'].value
+        let ranking = document.forms['feelingForm']['input'].value;
 
         dispatch({
             type:'ADD_FEELING',
             payload: ranking
-        })
-        history.push('/understandingpage')
+        });
+        history.push('/understandingpage');
     }
 
     return(
@@ -23,7 +23,7 @@ function FeelingsPage(){
             <section>
                 <h1> How are you feeling today?</h1>
             </section>
-            <form name ="feeling" onSubmit={handleChange}>
+            <form name ="feelingForm" onSubmit={handleChange}>
                 <input 
                     name="input"
                     type="number" 

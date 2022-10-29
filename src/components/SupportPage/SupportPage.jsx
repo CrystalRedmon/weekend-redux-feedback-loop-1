@@ -5,13 +5,16 @@ function SupportPage(){
     const dispatch = useDispatch();
     const history = useHistory();
 
+
     function handleChange(evt){
         evt.preventDefault();
-        console.log('a thing', evt.target.value)
+        let ranking = document.forms['supportForm']['input'].value;
+
         dispatch({
             type:'ADD_SUPPORT',
-            payload: evt.target.value
-        })
+            payload: ranking
+        });
+        history.push('/commentspage');
     }
 
     return(
@@ -19,19 +22,18 @@ function SupportPage(){
             <section>
                 <h1> How well are you being supported?</h1>
             </section>
-            <form>
+            <form name="supportForm" onSubmit={handleChange}>
                 <input 
-                    onChange={handleChange}
+                    name="input"
                     type="number" 
                     min="0" 
                     max="5"
-
                     required
                 > 
                 </input>
 
                 <button 
-                    onClick={()=> history.push('/commentspage')}
+                    type="submit"
                 >
                     Next
                 </button>

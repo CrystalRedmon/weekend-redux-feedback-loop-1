@@ -9,11 +9,13 @@ function UnderstandPage(){
 
     function handleChange(evt){
         evt.preventDefault();
-        console.log('a thing', evt.target.value)
+        let ranking = document.forms['understandingForm']['input'].value
+
         dispatch({
             type:'ADD_UNDERSTANDING',
-            payload: evt.target.value
+            payload: ranking
         })
+        history.push('/supportpage')
     }
 
     return(
@@ -21,19 +23,18 @@ function UnderstandPage(){
             <section>
                 <h1> How well are you understanding the content?</h1>
             </section>
-            <form>
+            <form name ="understandingForm" onSubmit={handleChange}>
                 <input 
-                    onChange={handleChange}
+                    name="input"
                     type="number" 
                     min="0" 
                     max="5"
-
                     required
                 > 
                 </input>
 
                 <button 
-                    onClick={()=> history.push('/supportpage')}
+                    type="submit"
                 >
                     Next
                 </button>
