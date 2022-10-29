@@ -25,7 +25,7 @@ Create a multi-part form that allows users to leave feedback for today.
 There will be 4 views for the form parts.
 
 The parts:
-- How are you feeling today?
+- How are you feelingstoday?
 ![feeling](wireframes/feeling.png)
 - How well are you understanding the content?
 ![understanding](wireframes/understanding.png)
