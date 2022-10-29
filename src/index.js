@@ -6,8 +6,14 @@ import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 
-const feedback = (state = [], action) => {
+const feedback = (state = {}, action) => {
+    let {feelings, understanding, support, comments} = state;
+    
+    switch (action.type) {
+        case "ADD_FEELINGS":
+            return {feelings: state.action.payload};
 
+    }
     return state;
 }
 
