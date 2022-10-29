@@ -10,18 +10,17 @@ router.post('/', (req, res) => {
                     "feeling",
                     "understanding",
                     "support",
-                    "comments",
-                    "flagged",
-                    "date"
+                    "comments"
+                    
                     ) 
-                    VALUES ($1, $2, $3, $4, $5, $6)`
+                    VALUES ($1, $2, $3, $4)`
     let sqlParams = [
         newFeedback.feeling,
         newFeedback.understanding,
         newFeedback.support,
         newFeedback.comments,
-        newFeedback.flagged,
-        newFeedback.date
+        // newFeedback.flagged,
+        // newFeedback.date
     ]
     pool.query(sqlText, sqlParams)
         .then(result => {

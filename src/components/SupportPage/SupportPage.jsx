@@ -1,7 +1,6 @@
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
-
 function SupportPage(){
     const dispatch = useDispatch();
     const history = useHistory();

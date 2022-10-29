@@ -32,7 +32,7 @@ function CommentsPage(){
                 </input>
 
                 <button 
-                    onClick={()=> history.push('/commentspage')}
+                    onClick={()=> history.push('/reviewpage')}
                 >
                     Next
                 </button>
