@@ -1,7 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import './App.css';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Route, Link, Redirect } from 'react-router-dom';
 
 import CommentsPage from '../CommentsPage/CommentsPage';
 import FeelingsPage from '../FeelingsPage/FeelingsPage';
@@ -22,7 +22,9 @@ function App() {
           <h4>Don't forget it!</h4>
         </header>
 
-      <Route path='/FeelingsPage' exact>
+      <Route path='/' exact>  
+        {/* <Redirect to='/feelingspage' /> */}
+
         <FeelingsPage />
       </Route>
       

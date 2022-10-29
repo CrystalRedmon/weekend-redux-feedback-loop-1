@@ -9,6 +9,7 @@ function ThankYouPage(){
         dispatch({
             type: 'RESET_STATE',
         })
+        history.push('/');
     }
 
     return(

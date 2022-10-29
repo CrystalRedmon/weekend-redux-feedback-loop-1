@@ -31,6 +31,8 @@ const feedback = (state = {}, action) => {
                 ...state,
                 comments: action.payload
             }
+        case "RESET_STATE":
+            return {};
     }
     return state;
 }

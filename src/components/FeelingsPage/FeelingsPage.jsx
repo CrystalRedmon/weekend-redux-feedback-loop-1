@@ -14,6 +14,7 @@ function FeelingsPage(){
             type:'ADD_FEELING',
             payload: evt.target.value
         })
+        // history.push('/understandingpage')
     }
 
     return(

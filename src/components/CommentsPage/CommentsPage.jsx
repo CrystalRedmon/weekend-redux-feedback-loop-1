@@ -13,6 +13,7 @@ function CommentsPage(){
             type:'ADD_COMMENTS',
             payload: evt.target.value
         })
+        
     }
 
     return(
@@ -26,7 +27,6 @@ function CommentsPage(){
                     type="text" 
                     min="0" 
                     max="5"
-
                     required
                 > 
                 </input>
