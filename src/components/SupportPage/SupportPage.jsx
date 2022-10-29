@@ -18,7 +18,7 @@ function SupportPage(){
     return(
         <>
             <section>
-                <h1> How well are you understanding the content?</h1>
+                <h1> How well are you being supported?</h1>
             </section>
             <form>
                 <input 
@@ -32,7 +32,7 @@ function SupportPage(){
                 </input>
 
                 <button 
-                    onClick={()=> history.push('/supportpage')}
+                    onClick={()=> history.push('/commentspage')}
                 >
                     Next
                 </button>

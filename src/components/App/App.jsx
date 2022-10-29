@@ -30,7 +30,7 @@ function App() {
         <CommentsPage />
       </Route>
 
-      <Route path='SupportPage' exact>
+      <Route path='/supportpage' exact>
         <SupportPage />
       </Route>
 
