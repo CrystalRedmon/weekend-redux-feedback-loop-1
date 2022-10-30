@@ -6,16 +6,19 @@ function ThankYouPage(){
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // clearing the redux state for new feedback info upon button click
     const newFeedback = () => {
         dispatch({
             type: 'RESET_STATE',
-        })
+        });
+        // navigate to next page
         history.push('/');
     }
 
     return(
         <>
             <h1>Thank You!</h1>
+            {/* MUI button component */}
             <Button 
                 onClick={newFeedback}
                 type="submit"

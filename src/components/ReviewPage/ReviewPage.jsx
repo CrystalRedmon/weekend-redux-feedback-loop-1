@@ -5,19 +5,13 @@ import { Button } from '@mui/material';
 
 function ReviewPage() {
     const history = useHistory();
+
+    // fetching state from redux store
     const feedback = useSelector( store => store.feedback);
     
     console.log('feedback', feedback);
-    // let info = {
-    //     feeling: 5,
-    //     understanding: 1000,
-    //     support: 1000,
-    //     comments: 'blah', 
-    //     flagged: true,
-    //     date: '5-5-2005'
-    // }
-   
-    
+
+    //submitting the feedback, previously stored in redux state, to the server and database
     const submitFeedback = (evt) => {
         evt.preventDefault();
 
@@ -27,23 +21,24 @@ function ReviewPage() {
             data: feedback
         })
         .then((response) => {
-            console.log('post success');
+            console.log('POST success');
         })
         .catch((err) => {
-            console.error('oh no');
+            console.error('error in POST', err);
         });
-
+        // navigate to next page
         history.push('/thankyoupage');
     }        
 
     return(
-        //gonna do a POST to the server here
         <>
+        {/* calling the fetched redux object (feedback) and displaying its properties */}
             <h1>Review Your Feedback</h1>
             <h2> Feelings: {feedback.feeling}</h2>
             <h2> Understanding: {feedback.understanding}</h2>
             <h2> Support: {feedback.support}</h2>
             <h2> Comments: {feedback.comments}</h2>
+            {/* MUI button */}
             <Button 
                 onClick={submitFeedback}
                 type="submit"

@@ -4,22 +4,25 @@ import { useState } from 'react';
 import { Button, Slider, Box } from '@mui/material';
 
 function UnderstandPage(){
-    const [understanding, setUnderstanding] = useState(0);
+    //local state, default 3
+    const [understanding, setUnderstanding] = useState(3);
     const dispatch = useDispatch();
     const history = useHistory();
 
 
+    // dispatch to redux store on submit
     function handleChange(evt){
         evt.preventDefault();
-        // let ranking = document.forms['understandingForm']['input'].value
 
         dispatch({
             type:'ADD_UNDERSTANDING',
             payload: understanding
-        })
+        });
+        // navigate to next page
         history.push('/supportpage')
     }
 
+    // slider marks
     const marks=[
         {
             value: 0,
@@ -27,27 +30,28 @@ function UnderstandPage(){
         },
         {
             value: 1,
-            label: 'Not well'
+            label: 'Not Well'
         },
         {
             value: 2,
-            label: 'Having a little trouble'
+            label: 'Having a Little Trouble'
         },
         {
             value: 3,
-            label: 'OK'
+            label: 'Decently'
         },
         {
             value: 4,
-            label: 'I got a handle on it'
+            label: 'I Got a Handle On It'
         },
         {
             value: 5,
-            label: `I know it all!!`
+            label: `I Know It All!!`
         },
     ];
     
-    const handleSlider = (evt) => {
+     //when slider moves, set value to local state
+     const handleSlider = (evt) => {
         setUnderstanding(evt.target.value);
     }
 
@@ -57,9 +61,11 @@ function UnderstandPage(){
                 <h1> How well are you understanding the content?</h1>
             </section>
             <form name ="understandingForm" onSubmit={handleChange}>
+                
+                {/* MUI components. Box, slider, button */}
                 <Box sx={{ m: 15 }}>
                 <Slider
-                    defaultValue={0}
+                    defaultValue={3}
                     valueLabelDisplay="auto"
                     step={1}
                     marks={marks}

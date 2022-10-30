@@ -23,8 +23,6 @@ function App() {
         </header>
 
       <Route path='/' exact>  
-        {/* <Redirect to='/feelingspage' /> */}
-
         <FeelingsPage />
       </Route>
       

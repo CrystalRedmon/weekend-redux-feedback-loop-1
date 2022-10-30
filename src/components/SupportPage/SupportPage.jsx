@@ -4,11 +4,12 @@ import { useState } from 'react';
 import { Button, Slider, Box } from '@mui/material';
 
 function SupportPage(){
-    const [support, setSupport] = useState(0);
+    //local state, default 3
+    const [support, setSupport] = useState(3);
     const dispatch = useDispatch();
     const history = useHistory();
 
-
+    // dispatch to redux store on submit
     function handleChange(evt){
         evt.preventDefault();
 
@@ -16,8 +17,11 @@ function SupportPage(){
             type:'ADD_SUPPORT',
             payload: support
         });
+        // navigate to next page
         history.push('/commentspage');
     }
+
+    // slider marks
     const marks=[
         {
             value: 0,
@@ -45,6 +49,7 @@ function SupportPage(){
         },
     ];
 
+    //when slider moves, set value to local state
     const handleSlider = (evt) => {
         setSupport(evt.target.value);
     }
@@ -54,27 +59,28 @@ function SupportPage(){
             <section>
                 <h1> How well are you being supported?</h1>
             </section>
-            <form name="supportForm" onSubmit={handleChange}>
-            <Box sx={{ m: 15 }}>
-                <Slider
-                    defaultValue={0}
-                    valueLabelDisplay="auto"
-                    step={1}
-                    marks={marks}
-                    min={0}
-                    max={5}
-                    onChange={handleSlider}
-                />
-                </Box>
+                <form name="supportForm" onSubmit={handleChange}>
+                    {/* MUI components. Box, Slider, and Button */}
+                    <Box sx={{ m: 15 }}>
+                        <Slider
+                            defaultValue={3}
+                            valueLabelDisplay="auto"
+                            step={1}
+                            marks={marks}
+                            min={0}
+                            max={5}
+                            onChange={handleSlider}
+                        />
+                    </Box>
 
-                <Button 
-                    type="submit"
-                    variant="contained"
-                    size='large'
-                    sx={{ m: 3 }}
-                >
-                    Next
-                </Button>
+                    <Button 
+                        type="submit"
+                        variant="contained"
+                        size='large'
+                        sx={{ m: 3 }}
+                    >
+                        Next
+                    </Button>
 
             </form>
         </>

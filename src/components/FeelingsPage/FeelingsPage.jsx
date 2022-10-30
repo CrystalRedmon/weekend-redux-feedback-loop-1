@@ -5,21 +5,25 @@ import { Button, Slider, Box } from '@mui/material';
 
 
 function FeelingsPage(){
-    const [feeling, setFeeling] = useState(0);
+    //local state, default 3
+    const [feeling, setFeeling] = useState(3);
     const dispatch = useDispatch();
     const history = useHistory();
 
+    // dispatch to redux store on submit
     function handleChange(evt){
         evt.preventDefault();
-        // let ranking = document.forms['feelingForm']['input'].value;
 
         dispatch({
             type:'ADD_FEELING',
             payload: feeling
         });
+
+        // navigate to next page
         history.push('/understandingpage');
     }
 
+    // slider marks
     const marks=[
         {
             value: 0,
@@ -47,6 +51,7 @@ function FeelingsPage(){
         },
     ];
 
+    //when slider moves, set value to local state
     const handleSlider = (evt) => {
         setFeeling(evt.target.value);
     }
@@ -57,21 +62,11 @@ function FeelingsPage(){
                 <h1> How are you feeling today?</h1>
             </section>
             <form name ="feelingForm" onSubmit={handleChange}>
-                {/* <Input 
-                    // color="info"
-                    inputProps={{ min: 0, max: 5 }}
-                    placeholder="rating?"
-                    name="input"
-                    type="number" 
-                    max="5"
-                    required
-                    variant="outlined"
-                > 
-                </Input> */}
-
+                
+                {/* MUI components. Box, slider, button */}
                 <Box sx={{ m: 15 }}>
                 <Slider
-                    defaultValue={0}
+                    defaultValue={3}
                     valueLabelDisplay="auto"
                     step={1}
                     marks={marks}
