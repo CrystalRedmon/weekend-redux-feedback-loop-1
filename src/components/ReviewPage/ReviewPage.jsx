@@ -1,6 +1,8 @@
 import {useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import axios from 'axios';
+import { Button } from '@mui/material';
+
 function ReviewPage() {
     const history = useHistory();
     const feedback = useSelector( store => store.feedback);
@@ -42,11 +44,15 @@ function ReviewPage() {
             <h2> Understanding: {feedback.understanding}</h2>
             <h2> Support: {feedback.support}</h2>
             <h2> Comments: {feedback.comments}</h2>
-            <button 
+            <Button 
                 onClick={submitFeedback}
+                type="submit"
+                    variant="contained"
+                    size='large'
+                    sx={{ m: 3 }}
             > 
                 Submit
-            </button>
+            </Button>
         </>
     );
 }

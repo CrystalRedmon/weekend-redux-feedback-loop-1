@@ -1,20 +1,52 @@
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import { useState } from 'react';
+import { Button, Slider, Box } from '@mui/material';
 
 function SupportPage(){
+    const [support, setSupport] = useState(0);
     const dispatch = useDispatch();
     const history = useHistory();
 
 
     function handleChange(evt){
         evt.preventDefault();
-        let ranking = document.forms['supportForm']['input'].value;
 
         dispatch({
             type:'ADD_SUPPORT',
-            payload: ranking
+            payload: support
         });
         history.push('/commentspage');
+    }
+    const marks=[
+        {
+            value: 0,
+            label: 'Truly I am Alone'
+        },
+        {
+            value: 1,
+            label: 'Teacher Looked at Me Once'
+        },
+        {
+            value: 2,
+            label: 'Slightly Neglected'
+        },
+        {
+            value: 3,
+            label: 'Teacher is Teaching'
+        },
+        {
+            value: 4,
+            label: 'Everyone is Helpful'
+        },
+        {
+            value: 5,
+            label: 'Amazing!'
+        },
+    ];
+
+    const handleSlider = (evt) => {
+        setSupport(evt.target.value);
     }
 
     return(
@@ -23,20 +55,26 @@ function SupportPage(){
                 <h1> How well are you being supported?</h1>
             </section>
             <form name="supportForm" onSubmit={handleChange}>
-                <input 
-                    name="input"
-                    type="number" 
-                    min="0" 
-                    max="5"
-                    required
-                > 
-                </input>
+            <Box sx={{ m: 15 }}>
+                <Slider
+                    defaultValue={0}
+                    valueLabelDisplay="auto"
+                    step={1}
+                    marks={marks}
+                    min={0}
+                    max={5}
+                    onChange={handleSlider}
+                />
+                </Box>
 
-                <button 
+                <Button 
                     type="submit"
+                    variant="contained"
+                    size='large'
+                    sx={{ m: 3 }}
                 >
                     Next
-                </button>
+                </Button>
 
             </form>
         </>

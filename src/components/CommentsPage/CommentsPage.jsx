@@ -1,26 +1,33 @@
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
-
+import { useState } from 'react';
+import { Button, Slider, Box } from '@mui/material';
 
 function CommentsPage(){
+    const [comments, setComments] = useState('');
+
     const dispatch = useDispatch();
     const history = useHistory();
 
     function handleChange(evt){
         evt.preventDefault();
-        let comment = document.forms['commentsForm']['input'].value;
+        
 
         dispatch({
             type:'ADD_COMMENTS',
-            payload: comment
+            payload: comments
         })
         history.push('/reviewpage')
+    }
+
+    const handleComments = (evt) => {
+        setComments(evt.target.value);
     }
 
     return(
          <>
             <section>
-                <h1> How well are you being supported?</h1>
+                <h1> Any additional comments?</h1>
             </section>
             <form name="commentsForm" onSubmit={handleChange}>
                 <input 
@@ -28,15 +35,18 @@ function CommentsPage(){
                     type="text" 
                     min="0" 
                     max="5"
-                
+                    onChange={handleComments}
                 > 
                 </input>
 
-                <button 
+                <Button 
                     type="submit"
+                    variant="contained"
+                    size='large'
+                    sx={{ m: 3 }}
                 >
                     Next
-                </button>
+                </Button>
 
             </form>
         </>

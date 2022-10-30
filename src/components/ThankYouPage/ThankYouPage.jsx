@@ -1,5 +1,6 @@
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
+import {Button } from '@mui/material';
 
 function ThankYouPage(){
     const dispatch = useDispatch();
@@ -15,9 +16,15 @@ function ThankYouPage(){
     return(
         <>
             <h1>Thank You!</h1>
-            <button onClick={newFeedback}>
+            <Button 
+                onClick={newFeedback}
+                type="submit"
+                    variant="contained"
+                    size='large'
+                    sx={{ m: 3 }}
+            >
                 Leave New Feedback
-            </button>
+            </Button>
         </>
     );
 }

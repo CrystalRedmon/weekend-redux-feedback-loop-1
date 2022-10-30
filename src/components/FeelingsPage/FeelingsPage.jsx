@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import {useHistory} from 'react-router-dom';
 import { useState } from 'react';
-import { Button, Input, Slider, Box } from '@mui/material';
+import { Button, Slider, Box } from '@mui/material';
 
 
 function FeelingsPage(){
@@ -46,7 +46,7 @@ function FeelingsPage(){
             label: 'Im Killin It! 😎'
         },
     ];
-    
+
     const handleSlider = (evt) => {
         setFeeling(evt.target.value);
     }
